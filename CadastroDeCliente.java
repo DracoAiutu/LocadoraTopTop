@@ -1,17 +1,17 @@
 package locadora;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
 import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.JButton;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.awt.event.ActionEvent;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
 public class CadastroDeCliente extends JFrame {
 	ArrayList<Cliente> ListaClientesCadastro;
@@ -24,6 +24,7 @@ public class CadastroDeCliente extends JFrame {
 	private JTextField numero;
 
 	public CadastroDeCliente(TelaSecundaria telaSecundaria, ArrayList<Cliente> lista56) {
+		setTitle("CADASTRO");
 
 		ListaClientesCadastro = lista56;
 
@@ -94,10 +95,29 @@ public class CadastroDeCliente extends JFrame {
 
 				JOptionPane.showMessageDialog(null, "Parabens Você é um cliente toptop");
 				System.out.println("Lista dos cliente Atualizada: " + lista56.toString());
+
 			}
 		});
-		btnCadastrar.setBounds(100, 325, 89, 23);
+		btnCadastrar.setBounds(100, 319, 89, 23);
 		contentPane.add(btnCadastrar);
+		
+		JButton btnVerClientes = new JButton("Ver Clientes");
+		btnVerClientes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(lista56.size()==0) {
+				JOptionPane.showMessageDialog(null,"Sem Clientes por enquanto");
+				}
+				else {
+					JOptionPane.showMessageDialog(null, lista56.toString());
+				}
+			}
+		});
+		btnVerClientes.setBounds(216, 319, 89, 23);
+		contentPane.add(btnVerClientes);
+		
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setBounds(331, 319, 89, 23);
+		contentPane.add(btnVoltar);
 
 		JButton btnVerFilmes = new JButton("Ver filmes");
 		btnVerFilmes.addActionListener(new ActionListener() {
@@ -107,7 +127,7 @@ public class CadastroDeCliente extends JFrame {
 				dispose();
 			}
 		});
-		btnVerFilmes.setBounds(385, 325, 89, 23);
+		btnVerFilmes.setBounds(451, 319, 89, 23);
 		contentPane.add(btnVerFilmes);
 	}
 }

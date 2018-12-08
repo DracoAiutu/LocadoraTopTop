@@ -8,6 +8,7 @@ package locadora;
 import javax.swing.JOptionPane;
 import java.awt.Font;
 import java.util.ArrayList;
+import java.awt.Color;
 
 class TelaLogin extends javax.swing.JFrame {
 
@@ -15,6 +16,8 @@ class TelaLogin extends javax.swing.JFrame {
 	public static ArrayList<Cliente> ListaClientes = new ArrayList<Cliente>();
 
 	public TelaLogin() {
+		setForeground(Color.RED);
+		setTitle("TELA DE LOGIN");
 		initComponents();
 	}
 
@@ -98,9 +101,17 @@ class TelaLogin extends javax.swing.JFrame {
 			entradaUsuario.setText("");
 			entradaSenha.setText("");
 
-		} else {
-			JOptionPane.showMessageDialog(null, "acesso bloqueado");
+		} 
+		else {
+			if (entradaUsuario.getText().equals("balrog") ) {
+				JOptionPane.showMessageDialog(null, "YOU SHALL NOT PASS");	
+			}else {
+				 {
+						JOptionPane.showMessageDialog(null, "Usuario ou Senha incorretos");
+					}
+			}
 		}
+		
 
 	}
 

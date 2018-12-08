@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
+import java.awt.Color;
+import javax.swing.UIManager;
 
 public class TelaSecundaria extends javax.swing.JFrame {
 
@@ -15,7 +17,10 @@ public class TelaSecundaria extends javax.swing.JFrame {
 	TelaLogin t1;
 	public static ArrayList<Cliente> ListaClientesSecundaria;
 
-	public TelaSecundaria(TelaLogin aThis, ArrayList<Cliente> listac) {
+	public TelaSecundaria(TelaLogin aThis,  ArrayList<Cliente> listac ) {
+		setForeground(Color.RED);
+		setResizable(false);
+		setTitle("OP\u00C7\u00D5ES");
 		ListaClientesSecundaria = listac;
 		initComponents();
 		this.t1 = aThis;
@@ -35,19 +40,27 @@ public class TelaSecundaria extends javax.swing.JFrame {
 		});
 
 		JPanel panel = new JPanel();
+		panel.setBorder(UIManager.getBorder("DesktopIcon.border"));
 
 		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-		layout.setHorizontalGroup(layout.createParallelGroup(Alignment.TRAILING)
-				.addGroup(layout.createSequentialGroup().addGap(18)
-						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 235, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED).addComponent(sairPraTela).addGap(106)));
-		layout.setVerticalGroup(layout.createParallelGroup(Alignment.TRAILING)
+		layout.setHorizontalGroup(
+			layout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(layout.createSequentialGroup()
-						.addGroup(layout.createParallelGroup(Alignment.LEADING)
-								.addComponent(sairPraTela, Alignment.TRAILING)
-								.addGroup(layout.createSequentialGroup().addContainerGap().addComponent(panel,
-										GroupLayout.PREFERRED_SIZE, 232, GroupLayout.PREFERRED_SIZE)))
-						.addContainerGap()));
+					.addGap(18)
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 235, GroupLayout.PREFERRED_SIZE)
+					.addGap(41)
+					.addComponent(sairPraTela, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE)
+					.addGap(40))
+		);
+		layout.setVerticalGroup(
+			layout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(layout.createSequentialGroup()
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addGroup(layout.createParallelGroup(Alignment.TRAILING)
+						.addComponent(sairPraTela, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
+						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 232, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap())
+		);
 		panel.setLayout(null);
 
 		JButton editorFilmes = new JButton("Editar filmes");
@@ -55,13 +68,13 @@ public class TelaSecundaria extends javax.swing.JFrame {
 		panel.add(editorFilmes);
 
 		JButton verFilmes = new JButton("Ver Filmes");
-		verFilmes.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				VerFilmes tela4 = new VerFilmes(TelaSecundaria.this, ListaClientesSecundaria);
-				tela4.setVisible(true);
-				dispose();
-			}
-		});
+//		verFilmes.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent arg0) {
+//				VerFilmes tela67 = new VerFilmes(null, TelaLogin.this);
+//				tela67.setVisible(true);
+//				dispose();			
+//				}
+//		});
 		verFilmes.setBounds(43, 92, 147, 23);
 		panel.add(verFilmes);
 
